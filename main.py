@@ -1,7 +1,7 @@
 import functions
 
-
-input_dir = 'data'
+# Update this directory as per the location of your dataset folder
+input_dir = 'dataset/data'
 #output_dir = 'output/ttd'
 #locales = ['en-US', 'sw-KE', 'de-DE']
 #partitions = ['test', 'train', 'dev']
