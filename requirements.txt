@@ -3,3 +3,8 @@ numpy
 tensorflow
 openpyxl
 jupyter
+et-xmlfile
+python-dateutil
+pytz
+six
+tzdata
