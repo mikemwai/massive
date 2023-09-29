@@ -1,34 +1,49 @@
 import os
-import json
+import argparse
+import functions
 
-# Specify the base directory where your folders are located
-base_directory = 'C:/Users/User/OneDrive/Desktop/today/1.1/data'  # Adjust the path accordingly
+# Define and parse command-line arguments
+parser = argparse.ArgumentParser(description="Process data and generate files.")
+parser.add_argument("--data_folder", type=str, required=True, help="Path to the data folder")
+parser.add_argument("--output_folder", type=str, required=True, help="Path to the output folder")
+parser.add_argument("--generate_excel", action="store_true", help="Generate separate Excel files")
+parser.add_argument("--generate_jsonl", action="store_true", help="Generate separate JSONL files")
+parser.add_argument("--generate_large_json", action="store_true", help="Generate a large JSON file")
+args = parser.parse_args()
 
-# Initialize an empty list to store all data
-all_data = []
+if not os.path.exists(args.output_folder):
+    os.makedirs(args.output_folder)
 
-# Iterate through all folders in the base directory
-for folder_name in os.listdir(base_directory):
-    folder_path = os.path.join(base_directory, folder_name)
+data_folder_path = args.data_folder
+output_directory = args.output_folder
 
-    # Check if it's a directory
-    if os.path.isdir(folder_path):
-        # Iterate through all JSONL files in the folder
-        for filename in os.listdir(folder_path):
-            if filename.endswith('.jsonl'):
-                jsonl_file_path = os.path.join(folder_path, filename)
+if args.generate_excel:
+    input_dataset_directory = data_folder_path
+    output_excel_directory = os.path.join(output_directory, 'excel_files')
+    functions.generate_excel_files(input_dataset_directory, output_excel_directory)
 
-                # Initialize an empty list to store data from this file
-                data = []
+if args.generate_jsonl:
+    # Generate separate JSONL files for train, test, and dev sets
+    target_languages = ["sw", "en", "de"]
+    test_ratio = 0.1
+    dev_ratio = 0.1
+    functions.partition_and_process_data(
+        input_directory=data_folder_path,
+        output_directory=output_directory,
+        output_json_path="train_translations.jsonl",
+        languages=target_languages,
+        test_ratio=test_ratio,
+        dev_ratio=dev_ratio
+    )
 
-                # Open the JSONL file and read it line by line
-                with open(jsonl_file_path, 'r', encoding='utf-8') as file:
-                    for line in file:
-                        # Parse each line as a JSON object and append it to the data list
-                        json_object = json.loads(line)
-                        data.append(json_object)
+if args.generate_large_json:
+    # Generate a large JSON file for translations from English (en) to other languages (xx)
+    target_languages = ["sw", "de"]  # Exclude English
+    functions.generate_large_json_file(
+        input_directory=data_folder_path,
+        output_directory=output_directory,
+        output_json_path="large_translations.json",
+        languages=target_languages
+    )
 
-                # Append the data from this file to the all_data list
-                all_data.extend(data)
-
-# Now, 'all_data' contains a list of dictionaries from all JSONL files in all folders
+print("Processing completed.")
