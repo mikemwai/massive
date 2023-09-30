@@ -2,7 +2,7 @@
 
 ## Prerequisites
 - Python version 3.11.5 installed on your system.
-
+- PyCharm version 2023.2.1
 
 ## Installation
 
