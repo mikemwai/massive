@@ -4,12 +4,12 @@ import pandas as pd
 import os
 
 
-def create_excel_files(input_dir ):
+def create_excel_files(input_dir):
     # Create a dictionary to organize data by language
     language_data = {}
 
     # Use glob to find all JSONL files in the directory
-    jsonl_file_paths = glob.glob(input_dir+ '/*.jsonl')
+    jsonl_file_paths = glob.glob(input_dir + '/*.jsonl')
 
     # Iterate through the list of JSONL file paths
     for jsonl_file_path in jsonl_file_paths:
@@ -42,10 +42,11 @@ def create_excel_files(input_dir ):
         df.to_excel(excel_file_name, index=False)
         print(f"Excel file '{excel_file_name}' generated for language '{language}'")
 
+
 def generate_partitioned_jsonl(input_dir):
     locales = ['en-US', 'sw-KE', 'de-DE']
     partitions = ['test', 'train', 'dev']
-   
+
     # Iterate through languages and partitions
     for lang in locales:
         for partition in partitions:
@@ -73,10 +74,10 @@ def generate_partitioned_jsonl(input_dir):
     print('Separate JSONL files created successfully.')
 
 
-#input_dir = 'data'
-#output_dir = 'output/ttd'
+# input_dir = 'data'
+# output_dir = 'output/ttd'
 
-#generate_partitioned_jsonl(input_dir, output_dir, locales, partitions)
+# generate_partitioned_jsonl(input_dir, output_dir, locales, partitions)
 def generate_combined_json(input_dir):
     output_file = 'output/train/combined_train_data.json'
     # Create an empty list to store the combined data
@@ -102,12 +103,11 @@ def generate_combined_json(input_dir):
                     })
 
     # Write the combined data to the output JSON file
-    
+
     with open(output_file, 'w', encoding='utf-8') as output_json:
         json.dump(combined_data, output_json, ensure_ascii=False, indent=2)
     print('Combined JSONL file created successfully.')
 
-#input_directory = 'data'  # Directory containing the JSONL files
-#output_json_file = 'output/train/combined_train_data.json'
-#generate_combined_json(input_directory, output_json_file)
-
+# input_directory = 'data'  # Directory containing the JSONL files
+# output_json_file = 'output/train/combined_train_data.json'
+# generate_combined_json(input_directory, output_json_file)
