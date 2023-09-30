@@ -48,8 +48,7 @@ If you'd like to contribute to this project:
 Contributions, bug reports, and feature requests are welcome!
 
 ## Issues
-If you have any issues with the project, feel free to open up an issue through the link below.
-(https://github.com/mikemwai/massive/issues)
+If you have any issues with the project, feel free to open up an [issue](https://github.com/mikemwai/massive/issues).
 
 ## License
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
