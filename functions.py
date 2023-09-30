@@ -2,7 +2,6 @@ import json
 import glob
 import pandas as pd
 import os
-import pprint
 
 
 def create_excel_files(input_dir ):
@@ -112,8 +111,7 @@ def generate_combined_json(input_dir):
     # Write the combined data to the output JSON file
     
     with open(output_file, 'w', encoding='utf-8') as output_json:
-         pprint.pprint(combined_data, stream=output_json)
-        
+        json.dump(combined_data, output_json, ensure_ascii=False, indent=2)
 
 #input_directory = 'data'  # Directory containing the JSONL files
 #output_json_file = 'output/train/combined_train_data.json'
