@@ -1,7 +1,7 @@
 # massive
 
 ## Prerequisites
-- Python version 3.11.5 installed on your system.
+- Python version 3.11.5 
 - PyCharm version 2023.2.1
 
 ## Installation
