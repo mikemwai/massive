@@ -4,40 +4,53 @@ import os
 
 def main():
     # Update this directory as per the location of your dataset folder
-    input_dir = 'dataset/data'
-    output_dir = './output/train'
+    input_dir = './data'
+    output_dir = './output/'
     languages = ['en', 'de', 'sw']
 
     if not os.path.exists(input_dir):
         print(f"Input directory '{input_dir}' does not exist.")
         return
 
-    if len(sys.argv) != 2:
+    if len(sys.argv) < 2:
+        print("Please provide at least one function name.")
         return
 
-    function_name = sys.argv[1]
+    # Retrieve all provided function names
+    function_names = sys.argv[1:]
 
-    # Check if the output directories exist and create them if not
-    if function_name == "generate_excel_files":
-        output_directory = 'output/xlsx'
-    elif function_name == "separate_files":
-        output_directory = 'output/ttd'
-    elif function_name == "train_translations":
-        output_directory = 'output/train'
-    else:
-        print(f"Function '{function_name}' not recognized.")
-        return
+    # Define flags to control behavior
+    generate_excel_files_flag = "generate_excel_files" in function_names
+    separate_files_flag = "separate_files" in function_names
+    train_translations_flag = "train_translations" in function_names
 
-    if not os.path.exists(output_directory):
-        os.makedirs(output_directory)
+    # Check and create the main output directory if it does not exist
+    if not os.path.exists(output_dir):
+        os.makedirs(output_dir)
 
-    # Call the specified function from the 'functions' module
-    if function_name == "generate_excel_files":
+    # Check and create subdirectories based on flags
+    if generate_excel_files_flag:
+        excel_output_directory = os.path.join(output_dir, 'xlsx')
+        if not os.path.exists(excel_output_directory):
+            os.makedirs(excel_output_directory)
+
+    if separate_files_flag:
+        ttd_output_directory = os.path.join(output_dir, 'ttd')
+        if not os.path.exists(ttd_output_directory):
+            os.makedirs(ttd_output_directory)
+
+    if train_translations_flag:
+        train_output_directory = os.path.join(output_dir, 'train')
+        if not os.path.exists(train_output_directory):
+            os.makedirs(train_output_directory)
+
+    # Check and run functions based on the flags
+    if generate_excel_files_flag:
         functions.create_excel_files(input_dir)
-    elif function_name == "separate_files":
+    if separate_files_flag:
         functions.generate_partitioned_jsonl(input_dir)
-    elif function_name == "train_translations":
-        functions.generate_combined_json(input_dir, output_dir, languages)
+    if train_translations_flag:
+        functions.generate_combined_json(input_dir, train_output_directory, languages)
 
 if __name__ == "__main__":
     main()
