@@ -42,13 +42,6 @@ def create_excel_files(input_dir ):
         df.to_excel(excel_file_name, index=False)
         print(f"Excel file '{excel_file_name}' generated for language '{language}'")
 
-# Call the function with the directory where your JSONL files are located
-#jsonl_directory = 'data'
-#create_excel_files(jsonl_directory)
-
-
-
-
 def generate_partitioned_jsonl(input_dir):
     locales = ['en-US', 'sw-KE', 'de-DE']
     partitions = ['test', 'train', 'dev']
