@@ -112,6 +112,7 @@ def generate_combined_json(input_dir):
     
     with open(output_file, 'w', encoding='utf-8') as output_json:
         json.dump(combined_data, output_json, ensure_ascii=False, indent=2)
+    print('Combined JSONL file created successfully.')
 
 #input_directory = 'data'  # Directory containing the JSONL files
 #output_json_file = 'output/train/combined_train_data.json'
