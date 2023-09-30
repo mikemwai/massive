@@ -5,7 +5,7 @@ import os
 def main():
     # Update this directory as per the location of your dataset folder
     input_dir = 'dataset/data'
-    output_dir = './output/'
+    output_dir = 'output/'
     languages = ['en', 'de', 'sw']
 
     if not os.path.exists(input_dir):

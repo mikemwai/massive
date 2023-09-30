@@ -38,6 +38,13 @@
    pip install -r requirements.txt
  ```
 
+## Usage
+Run the project:
+
+```sh
+   python main.py generate_excel_files separate_files train_translations
+```
+
 ## Contributing
 
 If you'd like to contribute to this project:
