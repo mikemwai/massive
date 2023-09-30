@@ -4,7 +4,7 @@ import os
 
 def main():
     # Update this directory as per the location of your dataset folder
-    input_dir = './data'
+    input_dir = 'dataset/data'
     output_dir = './output/train'
     languages = ['en', 'de', 'sw']
 
