@@ -1,18 +1,17 @@
+# Import the functions module
 import functions
 
-# Update this directory as per the location of your dataset folder
+# Define this directory as per where your dataset folder is located
 input_dir = 'dataset/data'
-#output_dir = 'output/ttd'
-#locales = ['en-US', 'sw-KE', 'de-DE']
-#partitions = ['test', 'train', 'dev']
 
-#generatecreate a file that contains the english translation of the language
-#generate a en-xx.xlxs file for all the languages.
+
+# Step 1: Generate Excel files containing language translations
 generate_excel_files=functions.create_excel_files(input_dir)
 
-#For English (en), Swahili (sw) and German (de), generate separate jsonl files with test, train and dev respectively.
+# Step 2: Create separate JSONL files for English (en), Swahili (sw), and German (de) for test, train, and dev datasets.
 separate_files=functions.generate_partitioned_jsonl(input_dir)
 
-#Generate one large json file showing all the translations from en to xx with id and utt for all the train sets.
+# Step 3: Generate a unified JSON file with translations from English (en) to all languages,
+# including unique IDs and utterances for all the training sets.
 train_translations=functions.generate_combined_json(input_dir)
 
