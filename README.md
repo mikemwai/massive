@@ -3,6 +3,7 @@
 ## Prerequisites
 - Python version 3.11.5 installed on your system.
 
+
 ## Installation
 
 1. Clone the repository on your local machine.
@@ -45,6 +46,10 @@ If you'd like to contribute to this project:
 - Submit a [pull request](https://github.com/mikemwai/massive/pulls) 
 
 Contributions, bug reports, and feature requests are welcome!
+
+## Issues
+If you have any issues with the project, feel free to open up an issue through the link below.
+(https://github.com/mikemwai/massive/issues)
 
 ## License
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
