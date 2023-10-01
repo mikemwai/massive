@@ -2,7 +2,7 @@
 
 ## Project Description
 
-This Python3 project aims to process the MASSIVE Dataset, focusing on generating language-specific files, such as en-xx.xlsx, for multiple languages and creating separate JSONL files for English (en), Swahili (sw), and German (de) with test, train, and dev data. Additionally, it will generate a single JSON file that contains translations from English to all languages with id and utt for the training sets. This project is designed to efficiently handle the dataset without using recursive algorithms to avoid potential memory and time complexity issues.
+This Python3 project aims to process the [massive](https://huggingface.co/datasets/AmazonScience/massive) dataset, focusing on generating language-specific files, such as en-xx.xlsx, for multiple languages and creating separate JSONL files for English (en), Swahili (sw), and German (de) with test, train, and dev data. Additionally, it will generate a single JSON file that contains translations from English to all languages with id and utt for the training sets. This project is designed to efficiently handle the dataset without using recursive algorithms to avoid potential memory and time complexity issues.
 
 ## Prerequisites
 
@@ -43,17 +43,15 @@ This Python3 project aims to process the MASSIVE Dataset, focusing on generating
   pip install -r requirements.txt
 ```
 
+5. Extract the [dataset](dataset.rar) on your project folder
+
 ## Usage
 
-Run the project:
+Run the project on the IDE terminal:
 
 ```sh
    python main.py generate_excel_files separate_files train_translations
 ```
-
-## Accessing the Dataset
-
-MASSIVE, the amazon dataset used in the project, can be downloaded [here](https://amazon-massive-nlu-dataset.s3.amazonaws.com/amazon-massive-dataset-1.0.tar.gz).
 
 ## Contributing
 
