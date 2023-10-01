@@ -11,7 +11,7 @@ This project aims to process the [massive](https://huggingface.co/datasets/Amazo
 
 ## Installation
 
-1. Clone the repository on your local machine.
+1. Clone the repository on your local machine:
 
 ```sh
   https://github.com/mikemwai/massive.git
@@ -43,7 +43,7 @@ This project aims to process the [massive](https://huggingface.co/datasets/Amazo
   pip install -r requirements.txt
 ```
 
-5. Extract the [dataset](dataset.rar) on your project folder
+5. Extract the [dataset](dataset.rar) on your project folder.
 
 ## Usage
 
