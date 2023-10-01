@@ -2,6 +2,7 @@ import functions
 import sys
 import os
 
+
 def main():
     # Update this directory as per the location of your dataset folder
     input_dir = 'dataset/data'
@@ -50,7 +51,8 @@ def main():
     if separate_files_flag:
         functions.generate_partitioned_jsonl(input_dir)
     if train_translations_flag:
-        functions.generate_combined_json(input_dir, train_output_directory, languages)
+        functions.generate_combined_json(input_dir)
+
 
 if __name__ == "__main__":
     main()
