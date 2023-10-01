@@ -2,7 +2,7 @@
 
 ## Project Description
 
-This Python3 project aims to process the [massive](https://huggingface.co/datasets/AmazonScience/massive) dataset, focusing on generating language-specific files, such as en-xx.xlsx, for multiple languages and creating separate JSONL files for English (en), Swahili (sw), and German (de) with test, train, and dev data. Additionally, it will generate a single JSON file that contains translations from English to all languages with id and utt for the training sets. This project is designed to efficiently handle the dataset without using recursive algorithms to avoid potential memory and time complexity issues.
+This project aims to process the [massive](https://huggingface.co/datasets/AmazonScience/massive) dataset, focusing on generating language-specific files, such as en-xx.xlsx, for multiple languages and creating separate JSONL files for English (en), Swahili (sw), and German (de) with test, train, and dev data. Additionally, it will generate a single JSON file that contains translations from English to all languages with id and utt for the training sets. This project is designed to efficiently handle the dataset without using recursive algorithms to avoid potential memory and time complexity issues.
 
 ## Prerequisites
 
