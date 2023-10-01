@@ -61,7 +61,7 @@ If you'd like to contribute to this project:
 
 Contributions, bug reports, and feature requests are welcome!
 
-## Issue
+## Issues
 
 If you have any issues with the project, feel free to open up an [issue](https://github.com/mikemwai/massive/issues).
 
