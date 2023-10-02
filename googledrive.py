@@ -13,12 +13,13 @@ except FileNotFoundError:
 except Exception as e:
     print(f"An error occurred: {str(e)}")
 
-
-credentials = service_account.Credentials.from_service_account_file('cohesive-scope-400809-b4cb18e44e7b.json', scopes=['https://www.googleapis.com/auth/drive'])
+credentials = service_account.Credentials.from_service_account_file('cohesive-scope-400809-b4cb18e44e7b.json',
+                                                                    scopes=['https://www.googleapis.com/auth/drive'])
 
 drive_service = build('drive', 'v3', credentials=credentials)
 
-project_folder_path = 'C:/Users/LENOVO/CGprojects/massive'
+project_folder_path = 'C:/Users/Usewr/computer_graphics/massive'
+
 
 def upload_file(file_path, parent_folder_id):
     filename = os.path.basename(file_path)
@@ -28,6 +29,7 @@ def upload_file(file_path, parent_folder_id):
     }
     media = MediaFileUpload(file_path)
     drive_service.files().create(body=file_metadata, media_body=media, fields='id').execute()
+
 
 folder_metadata = {
     'name': 'Computer Graphics GRP9',
