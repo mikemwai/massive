@@ -102,6 +102,8 @@ def generate_combined_json(input_dir, output_dir, languages):
     with open(os.path.join(output_dir, 'combined_train_data.json'), 'w', encoding='utf-8') as output_json:
         json.dump(combined_data, output_json, ensure_ascii=False, indent=2)
 
+    print('Combined JSON file created successfully.')
+
 
 def add_entry(combined_data, entry_id, language, entry_utt):
     if entry_id not in combined_data:
