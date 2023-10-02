@@ -108,4 +108,3 @@ def add_entry(combined_data, entry_id, language, entry_utt):
         combined_data[entry_id] = {}
     combined_data[entry_id][language] = entry_utt
 
-
