@@ -8,3 +8,4 @@ python-dateutil
 pytz
 six
 tzdata
+google-cloud-storage
