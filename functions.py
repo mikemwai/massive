@@ -4,12 +4,12 @@ import pandas as pd
 import os
 
 
-def create_excel_files(input_dir ):
+def create_excel_files(input_dir):
     # Create a dictionary to organize data by language
     language_data = {}
 
     # Use glob to find all JSONL files in the directory
-    jsonl_file_paths = glob.glob(input_dir+ '/*.jsonl')
+    jsonl_file_paths = glob.glob(os.path.join(input_dir, '*.jsonl'))
 
     # Iterate through the list of JSONL file paths
     for jsonl_file_path in jsonl_file_paths:
@@ -42,10 +42,11 @@ def create_excel_files(input_dir ):
         df.to_excel(excel_file_name, index=False)
         print(f"Excel file '{excel_file_name}' generated for language '{language}'")
 
+
 def generate_partitioned_jsonl(input_dir):
     locales = ['en-US', 'sw-KE', 'de-DE']
     partitions = ['test', 'train', 'dev']
-   
+
     # Iterate through languages and partitions
     for lang in locales:
         for partition in partitions:
@@ -73,14 +74,8 @@ def generate_partitioned_jsonl(input_dir):
     print('Separate JSONL files created successfully.')
 
 
-#input_dir = 'data'
-#output_dir = 'output/ttd'
-
-#generate_partitioned_jsonl(input_dir, output_dir, locales, partitions)
-def generate_combined_json(input_dir):
-    output_file = 'output/train/combined_train_data.json'
-    # Create an empty list to store the combined data
-    combined_data = []
+def generate_combined_json(input_dir, output_dir, languages):
+    combined_data = {}
 
     # Find all JSONL files in the input directory
     jsonl_files = glob.glob(os.path.join(input_dir, '*.jsonl'))
@@ -95,19 +90,22 @@ def generate_combined_json(input_dir):
             for line in input_file:
                 record = json.loads(line)
                 if 'partition' in record and record['partition'] == 'train':
-                    combined_data.append({
-                        'id': record['id'],
-                        'utt': record['utt'],
-                        'language': lang  # Include the language for reference
-                    })
+                    entry_id = record['id']
+                    entry_utt = record['utt']
+                    add_entry(combined_data, entry_id, lang, entry_utt)
+
+    # Check if the output directory exists and create it if not
+    if not os.path.exists(output_dir):
+        os.makedirs(output_dir)
 
     # Write the combined data to the output JSON file
-    
-    with open(output_file, 'w', encoding='utf-8') as output_json:
+    with open(os.path.join(output_dir, 'combined_train_data.json'), 'w', encoding='utf-8') as output_json:
         json.dump(combined_data, output_json, ensure_ascii=False, indent=2)
-    print('Combined JSONL file created successfully.')
 
-#input_directory = 'data'  # Directory containing the JSONL files
-#output_json_file = 'output/train/combined_train_data.json'
-#generate_combined_json(input_directory, output_json_file)
+
+def add_entry(combined_data, entry_id, language, entry_utt):
+    if entry_id not in combined_data:
+        combined_data[entry_id] = {}
+    combined_data[entry_id][language] = entry_utt
+
 
