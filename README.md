@@ -41,7 +41,7 @@ This project aims to process the [massive](https://huggingface.co/datasets/Amazo
   pip install -r requirements.txt
 ```
 
-5. Extract the [dataset folder](dataset.rar) on your project folder.
+5. Extract the [dataset folder](dataset.rar) on your project folder. Use winrar to extract.
 
 ## Usage
 
