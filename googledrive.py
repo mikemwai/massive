@@ -17,6 +17,7 @@ credentials = service_account.Credentials.from_service_account_file('cohesive-sc
 
 drive_service = build('drive', 'v3', credentials=credentials)
 
+# Update according to your project's folder
 project_folder_path = 'C:/Users/Usewr/computer_graphics/massive'
 
 
