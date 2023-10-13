@@ -12,7 +12,7 @@ This project aims to process the [massive](https://huggingface.co/datasets/Amazo
 1. Clone the repository on your local machine:
 
 ```sh
-  https://github.com/mikemwai/massive.git
+  git clone https://github.com/mikemwai/massive.git
 ```
 
 2. Navigate to the project directory and create a virtual environment on your local machine through the command line:
